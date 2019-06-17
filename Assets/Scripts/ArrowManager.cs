@@ -73,21 +73,26 @@ public class ArrowManager : MonoBehaviour
     {
         if (isAttachedToBow)
         {
-            float dist = (stringStartPoint.transform.position - transform.position).magnitude;
-            stringAttachPoint.transform.localPosition = stringStartPoint.transform.localPosition + new Vector3(5f* dist, 0f, 0f);
+            float stringPullDistance = (stringStartPoint.transform.position - transform.position).magnitude;
+            float normalizedStringPullDistance = Mathf.Clamp(stringPullDistance, 0f, 1f);
+            stringAttachPoint.transform.localPosition = stringStartPoint.transform.localPosition + new Vector3(5f* normalizedStringPullDistance, 0f, 0f);
 
             if (shootArrowAction.GetStateUp(SteamVR_Input_Sources.RightHand))
             {
-                Fire();
+                Fire(normalizedStringPullDistance);
             }
         }
     }
 
-    private void Fire()
+    private void Fire(float charge)
     {
+        Debug.LogError($"charge is: {charge}");
+
         currentArrow.transform.parent = null;
+        currentArrow.GetComponent<Arrow>().IsFired = true;
+
         var rb = currentArrow.GetComponent<Rigidbody>();
-        rb.velocity = currentArrow.transform.forward * 10f;
+        rb.velocity = currentArrow.transform.forward * 30f * charge;
         rb.useGravity = true;
 
         stringAttachPoint.transform.position = stringStartPoint.transform.position;
