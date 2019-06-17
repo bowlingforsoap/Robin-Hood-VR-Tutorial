@@ -91,6 +91,8 @@ public class ArrowManager : MonoBehaviour
         currentArrow.transform.parent = null;
         currentArrow.GetComponent<Arrow>().IsFired = true;
 
+        currentArrow.GetComponent<Collider>().isTrigger = false; // so it can interact with the RigidBodies in the scene
+
         var rb = currentArrow.GetComponent<Rigidbody>();
         rb.velocity = currentArrow.transform.forward * 30f * charge;
         rb.useGravity = true;
