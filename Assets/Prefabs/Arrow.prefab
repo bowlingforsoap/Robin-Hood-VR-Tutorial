@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84a5a23ba0b59e4f82ede62afd31178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowAttachingAction: {fileID: 11400000, guid: ab1fe285ec9ffb444a848a64e1da61f9,
+  attachArrowToBowAction: {fileID: 11400000, guid: e85ef958e92a0b14c89b7480377c167e,
     type: 2}

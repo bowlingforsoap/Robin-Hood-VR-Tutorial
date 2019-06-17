@@ -55,15 +55,16 @@ public class ArrowManager : MonoBehaviour
         {
             currentArrow = Instantiate(arrowPrefab);
             currentArrow.transform.parent = transform;
-            currentArrow.transform.localPosition += new Vector3(0f, 0f, 0.39f);
+            currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.39f);
+            currentArrow.transform.localRotation = Quaternion.identity;
         }
     }
 
     public void AttachArrowToBow()
     {
         currentArrow.transform.parent = stringAttachPoint.transform;
-        currentArrow.transform.rotation = arrowReference.transform.rotation;
         currentArrow.transform.localPosition = arrowReference.transform.localPosition;
+        currentArrow.transform.rotation = arrowReference.transform.rotation;
 
         isAttachedToBow = true;
     }
@@ -88,6 +89,8 @@ public class ArrowManager : MonoBehaviour
         var rb = currentArrow.GetComponent<Rigidbody>();
         rb.velocity = currentArrow.transform.forward * 10f;
         rb.useGravity = true;
+
+        stringAttachPoint.transform.position = stringStartPoint.transform.position;
 
         currentArrow = null;
         isAttachedToBow = false;

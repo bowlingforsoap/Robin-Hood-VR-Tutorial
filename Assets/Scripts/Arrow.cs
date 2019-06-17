@@ -6,7 +6,7 @@ using Valve.VR;
 
 public class Arrow : MonoBehaviour
 {
-    public SteamVR_Action_Single arrowAttachingAction;
+    public SteamVR_Action_Single attachArrowToBowAction;
 
     private void OnTriggerStay(Collider other)
     {
@@ -15,8 +15,8 @@ public class Arrow : MonoBehaviour
 
     private void AttachArrow()
     {
-        float shouldAttach = arrowAttachingAction.GetAxis(SteamVR_Input_Sources.RightHand);
-        if (shouldAttach > 0f)
+        float shouldAttach = attachArrowToBowAction.GetAxis(SteamVR_Input_Sources.RightHand);
+        if (shouldAttach > .75f)
         {
             ArrowManager.Instance.AttachArrowToBow();
         }

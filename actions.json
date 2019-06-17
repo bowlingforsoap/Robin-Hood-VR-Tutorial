@@ -40,6 +40,11 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/ArrowLoad",
+      "type": "vector1",
+      "requirement": "mandatory"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -117,7 +122,11 @@
       "/actions/buggybuddy/in/Reset": "Reset",
       "/actions/platformer/in/Move": "Move",
       "/actions/platformer/in/Jump": "Jump",
-      "/actions/default/in/Plant": "Plant"
+      "/actions/default/in/Plant": "Plant",
+      "/actions/default/in/ArrowLoadAndRelease": "Arrow Load and Release",
+      "/actions/default/in/ArrowLoad": "Arrow Load",
+      "/actions/default/in/ArrowShoot": "Arrow Shoot",
+      "/actions/default/in/ArrowLoadRelease": "Arrow Load and Release"
     }
   ]
 }
